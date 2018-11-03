@@ -1,7 +1,7 @@
 import createDestinations from './createDestinations';
 import createTrips from './createTrips';
 
-export default function seed(client) {
-  createDestinations(client);
-  createTrips(client);
+export default async function seed(client) {
+  await createDestinations(client);
+  await createTrips(client);
 }

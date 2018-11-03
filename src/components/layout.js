@@ -10,6 +10,7 @@ import Header from './header'
 import './layout.css'
 
 const client = new faunadb.Client({ secret: 'fnAC-8NuzGACAljfuLW0PrHYpkJf6lzrHNY-gWyV' });
+
 seed(client);
 
 const Layout = ({ children }) => (
