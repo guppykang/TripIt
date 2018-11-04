@@ -45,7 +45,7 @@ class Event extends Component {
 
   render() {
     return (
-      <Popup trigger={<button className='button' style={{ marginLeft: '1rem'}}> Create New Trip </button>} modal>
+      <Popup trigger={<button className='button' style={{ marginLeft: '1rem'}}> Create New Event </button>} modal>
         {close => (
           <div className='modal'>
             <div className='header'>

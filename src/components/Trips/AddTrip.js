@@ -47,7 +47,7 @@ class AddTrip extends Component {
         {close => (
           <div className='modal'>
             <div className='header'>
-              Create New Event
+              Create New Trip
               <button className='close' onClick={close} href=''>
                 &times;
               </button>
