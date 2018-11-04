@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { Link } from 'gatsby'
 
 import fire from '../fire';
-import './addTrip.css';
+import './addEvent.css';
 
-class AddTrip extends Component {
+class AddEvent extends Component {
   constructor(props) {
     super(props);
 
@@ -47,7 +47,7 @@ class AddTrip extends Component {
         {close => (
           <div className='modal'>
             <div className='header'>
-              Create New Trip
+              Create New Event
               <button className='close' onClick={close} href=''>
                 &times;
               </button>
@@ -72,4 +72,4 @@ class AddTrip extends Component {
   }
 }
 
-export default AddTrip;
+export default AddEvent;

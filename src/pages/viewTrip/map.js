@@ -3,12 +3,12 @@ import { Link } from 'gatsby'
 
 import Layout from '../../components/layout'
 import Map from '../../components/maps'
-import AddTrip from '../../components/Trips/addTrip'
+import AddEvent from '../../components/Events/AddEvent'
 
 const ViewMap = () => (
   <Layout>
     <Map/>
-    <AddTrip />
+    <AddEvent />
     <Link to="/">Back to Trips</Link>
   </Layout>
 )

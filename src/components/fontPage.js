@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
-import Trips from './trips';
-import AddTrip from './addTrip';
+import Trips from './Trips/trips';
 
-import github from '../../images/github.jpg';
+import github from '../images/github.jpg';
 
 class FontPage extends Component {
   constructor() {
@@ -45,7 +44,6 @@ class FontPage extends Component {
     return (
       <div style={{ top: '30%', width: '80%', marginLeft: '10%' }}>
         <Trips trips={this.state.trips} />
-        <AddTrip />
       </div>
     );
   }
