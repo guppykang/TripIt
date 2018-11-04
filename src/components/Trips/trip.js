@@ -10,7 +10,7 @@ const Trip = (props) => {
     priceDisplay += '$';
   }
   return (
-    <Link to="/viewTrip/map/" style={{ color: 'black', paddingLeft: '1rem', paddingRight: '1rem'}}>
+    <Link to="/viewTrip/" style={{ color: 'black', paddingLeft: '1rem', paddingRight: '1rem'}}>
       <div>
         <span>{props.title}</span>
         <span style={{ marginRight: '0.2rem', marginLeft: '0.2rem' }}>|</span>
