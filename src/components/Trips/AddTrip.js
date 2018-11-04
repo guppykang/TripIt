@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { Link } from 'gatsby'
 
 import fire from '../fire';
-import './addEvent.css';
+import './addTrip.css';
 
-class Event extends Component {
+class AddTrip extends Component {
   constructor(props) {
     super(props);
 
@@ -28,7 +28,7 @@ class Event extends Component {
     console.log(e.target.start.value)
     console.log(e.target.dest.value)
 
-    fire.database().ref('Event/').push({
+    fire.database().ref('Trip/').push({
           start: e.target.start.value,
           dest: e.target.dest.value
       }).then((data)=>{
@@ -71,4 +71,4 @@ class Event extends Component {
   }
 }
 
-export default Event;
+export default AddTrip;
