@@ -3,20 +3,16 @@ import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
 import Image from '../components/image'
-import Map from '../components/maps'
 import SearchBox from '../components/searchbox'
 
 const IndexPage = () => (
   <Layout>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
+    <h1>Trip List goes here...</h1>
     <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
       <Image />
     </div>
-    <SearchBox/>
-    <Map/>
-    <Link to="/page-2/">Go to page 2</Link>
+    <Link to="/viewTrip/map/">Map</Link>
+    <Link to="/create-trip/">Create Trip</Link>
   </Layout>
 )
 
