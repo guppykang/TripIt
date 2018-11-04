@@ -12,7 +12,6 @@ class Map extends Component {
       markers: []
       }
     this.onToggleOpen = this.onToggleOpen.bind(this);
-    this.zoomToMarkers = this.zoomToMarkers.bind(this);
 }
 
 onToggleOpen(event){
