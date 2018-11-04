@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 import { Link } from 'gatsby'
 
 import fire from '../fire';
+import SearchBox from '../searchbox';
+
 import './addEvent.css';
+
 
 class Event extends Component {
   constructor(props) {
@@ -11,27 +14,32 @@ class Event extends Component {
 
     this.state = {
       start: '',
-      dest: '', 
+      dest: '',
       time: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
   handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+  //  this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
 
-    console.log(e.target.start.value)
+    console.log(this.state.start.name)
     console.log(e.target.dest.value)
 
     fire.database().ref('Trip/Events').push({
-          start: e.target.start.value,
-          name: e.target.dest.value, 
+          start: {
+            name: this.state.start.name,
+            lat: this.state.start.geometry.location.lat(),
+            lng: this.state.start.geometry.location.lng()
+          },
+          name: e.target.dest.value,
           time: e.target.time.value
       }).then((data)=>{
           //success callback
@@ -40,6 +48,13 @@ class Event extends Component {
           //error callback
           console.log('error ' , error)
       })
+  }
+
+  handleSearchChange(fieldId, location) {
+    console.log(location.geometry.location.lat());
+    this.setState({
+      [fieldId]: location
+    });
   }
 
 
@@ -56,12 +71,14 @@ class Event extends Component {
             </div>
             <div className='content'>
               <form onSubmit={this.handleSubmit}>
-                <label>
-                  <input type='text' name='dest' value={this.state.value} onChange={this.handleChange} placeholder={'Location of event?'} required/>
-                </label>
+                <SearchBox
+                  key="start"
+                  id="start"
+                  prompt="Where do you go?"
+                  onPlacesChanged={this.handleSearchChange} />
 
                 <label>
-                  <input type='text' name='start' value={this.state.value} onChange={this.handleChange} placeholder={'Name of event?'} required/>
+                  <input type='text' name='dest' value={this.state.value} onChange={this.handleChange} placeholder={'Name of event?'} required/>
                 </label>
 
                 <label>

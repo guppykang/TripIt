@@ -7,7 +7,7 @@ import AddEvent from '../../components/Events/AddEvent'
 
 const ViewMap = (props) => (
   <Layout>
-    {props.location.pathname}
+    {/* {props.location.pathname} */}
     <Map/>
     <AddEvent />
     <Link to="/">Back to Trips</Link>
