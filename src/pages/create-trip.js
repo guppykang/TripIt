@@ -5,7 +5,7 @@ import Layout from '../components/layout'
 
 const CreateTrip = () => (
   <Layout>
-    <Link to='/viewTrip/map/'>Cancel</Link>
+    <Link to='/'>Cancel</Link>
   </Layout>
 )
 
