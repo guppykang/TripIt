@@ -1,7 +1,6 @@
 import Popup from 'reactjs-popup';
 import React, { Component } from 'react';
-import { Link } from 'gatsby'
-
+import SearchBox from '../searchbox';
 import fire from '../fire';
 import './addEvent.css';
 
@@ -11,12 +10,13 @@ class Event extends Component {
 
     this.state = {
       start: '',
-      dest: '', 
-      time: ''
+      time: '',
+      location: null
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
   handleChange(e) {
@@ -27,11 +27,11 @@ class Event extends Component {
     e.preventDefault();
 
     console.log(e.target.start.value)
-    console.log(e.target.dest.value)
 
     fire.database().ref('Trip/Events').push({
           start: e.target.start.value,
-          name: e.target.dest.value, 
+          lat: this.state.location.geometry.location.lat(),
+          lng: this.state.location.geometry.location.lng(),
           time: e.target.time.value
       }).then((data)=>{
           //success callback
@@ -40,6 +40,12 @@ class Event extends Component {
           //error callback
           console.log('error ' , error)
       })
+  }
+
+  handleSearchChange(fieldId, location){
+    this.setState({
+      location: location
+    });
   }
 
 
@@ -56,9 +62,11 @@ class Event extends Component {
             </div>
             <div className='content'>
               <form onSubmit={this.handleSubmit}>
-                <label>
-                  <input type='text' name='dest' value={this.state.value} onChange={this.handleChange} placeholder={'Location of event?'} required/>
-                </label>
+              <SearchBox 
+                key="location"
+                id="location"
+                prompt="Location of Event?"
+                onPlacesChanged={this.handleSearchChange} />
 
                 <label>
                   <input type='text' name='start' value={this.state.value} onChange={this.handleChange} placeholder={'Name of event?'} required/>
