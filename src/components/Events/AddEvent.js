@@ -11,7 +11,8 @@ class Event extends Component {
 
     this.state = {
       start: '',
-      dest: ''
+      dest: '', 
+      time: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -30,7 +31,8 @@ class Event extends Component {
 
     fire.database().ref('Event/').push({
           start: e.target.start.value,
-          dest: e.target.dest.value
+          dest: e.target.dest.value, 
+          time: e.target.dest.value
       }).then((data)=>{
           //success callback
           console.log('data ' , data)
@@ -55,10 +57,15 @@ class Event extends Component {
             <div className='content'>
               <form onSubmit={this.handleSubmit}>
                 <label>
-                  <input type='text' name='start' value={this.state.value} onChange={this.handleChange} placeholder={'where you start?'} required/>
+                  <input type='text' name='dest' value={this.state.value} onChange={this.handleChange} placeholder={'Location of event?'} required/>
                 </label>
+
                 <label>
-                  <input type='text' name='dest' value={this.state.value} onChange={this.handleChange} placeholder={'where you go?'} required/>
+                  <input type='text' name='start' value={this.state.value} onChange={this.handleChange} placeholder={'Name of event?'} required/>
+                </label>
+
+                <label>
+                  <input type='text' name='time' value={this.state.value} onChange={this.handleChange} placeholder={'When will you go?'} required/>
                 </label>
                 <button type='submit'>Create</button>
               </form>

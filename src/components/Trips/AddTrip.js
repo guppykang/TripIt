@@ -28,7 +28,7 @@ class AddTrip extends Component {
     console.log(e.target.start.value)
     console.log(e.target.dest.value)
 
-    fire.database().ref('Trip/').push({
+    fire.database().ref('Event/').push({
           start: e.target.start.value,
           dest: e.target.dest.value
       }).then((data)=>{
