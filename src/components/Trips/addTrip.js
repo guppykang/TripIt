@@ -2,6 +2,8 @@ import Popup from 'reactjs-popup';
 import React, { Component } from 'react';
 import './addTrip.css';
 
+import SearchBox from '../searchbox';
+
 class AddTrip extends Component {
   constructor(props) {
     super(props);
@@ -39,10 +41,13 @@ class AddTrip extends Component {
             <div className='content'>
               <form onSubmit={this.handleSubmit}>
                 <label>
-                  <input type='text' name='start' value={this.state.value} onChange={this.handleChange} placeholder={'where you start?'} required/>
+                  <input type='text' name='start'  onChange={this.handleChange} placeholder={'where you start?'} required/>
                 </label>
+                {/* <label>
+                  <input type='text' name='dest' value={this.state.value} onChange={this.handleChange} placeholder={'where you go?'}  required/>
+                </label> */}
                 <label>
-                  <input type='text' name='dest' value={this.state.value} onChange={this.handleChange} placeholder={'where you go?'} required/>
+                  <SearchBox />
                 </label>
                 <input type='submit' value='Create' />
               </form>
