@@ -1,8 +1,11 @@
 import Popup from 'reactjs-popup';
 import React, { Component } from 'react';
-import './addTrip.css';
+import { Link } from 'gatsby'
 
-class AddTrip extends Component {
+import fire from '../fire';
+import './addEvent.css';
+
+class AddEvent extends Component {
   constructor(props) {
     super(props);
 
@@ -20,8 +23,21 @@ class AddTrip extends Component {
   }
 
   handleSubmit(e) {
-    alert('From: ' + this.state.start + 'To: ' + this.state.dest);
     e.preventDefault();
+
+    console.log(e.target.start.value)
+    console.log(e.target.dest.value)
+
+    fire.database().ref('Event/').push({
+          start: e.target.start.value,
+          dest: e.target.dest.value
+      }).then((data)=>{
+          //success callback
+          console.log('data ' , data)
+      }).catch((error)=>{
+          //error callback
+          console.log('error ' , error)
+      })
   }
 
 
@@ -31,7 +47,7 @@ class AddTrip extends Component {
         {close => (
           <div className='modal'>
             <div className='header'>
-              Create New Trip
+              Create New Event
               <button className='close' onClick={close} href=''>
                 &times;
               </button>
@@ -44,7 +60,8 @@ class AddTrip extends Component {
                 <label>
                   <input type='text' name='dest' value={this.state.value} onChange={this.handleChange} placeholder={'where you go?'} required/>
                 </label>
-                <input type='submit' value='Create' />
+                <button type='submit'>Create</button>
+                <Link to="/viewTrip/map/">Cancel</Link>
               </form>
             </div>
           </div>
@@ -55,4 +72,4 @@ class AddTrip extends Component {
   }
 }
 
-export default AddTrip;
+export default AddEvent;
