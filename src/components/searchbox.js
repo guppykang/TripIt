@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, withScriptjs } from 'react-google-maps';
+import { withScriptjs } from 'react-google-maps';
 import { StandaloneSearchBox } from 'react-google-maps/lib/components/places/StandaloneSearchBox'
 
 
@@ -18,10 +18,9 @@ class SearchBox extends Component{
     }
 
     onPlacesChanged(){
-        var newPlace = this.state.places.slice();
-
-        newPlace.push(this._searchBox.getPlaces()[0]);
-
+        var newPlace = this._searchBox.getPlaces()[0];
+        const location = newPlace.name
+        this.props.onPlacesChanged(this.props.id, location);
         this.setState({
             places: newPlace
         })
@@ -36,7 +35,7 @@ class SearchBox extends Component{
                 >
                     <input
                         type="text"
-                        placeholder="Customized your placeholder"
+                        placeholder={props.prompt}
                         style={{
                         boxSizing: `border-box`,
                         border: `1px solid transparent`,
@@ -51,6 +50,11 @@ class SearchBox extends Component{
                         }}
                     />
                 </StandaloneSearchBox>
+                <ul>
+                    <li>
+                        {props.places.name}
+                    </li>
+                </ul>
             </div>
         ));
 
@@ -62,6 +66,7 @@ class SearchBox extends Component{
                     loadingElement={<div style={{ height: `100%` }} />}
                     onPlacesChanged={this.onPlacesChanged}
                     places={this.state.places}
+                    prompt={this.props.prompt}
                 />
             </div>
         );

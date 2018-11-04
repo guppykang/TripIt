@@ -15,6 +15,7 @@ class AddTrip extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
   handleChange(e) {
@@ -24,6 +25,11 @@ class AddTrip extends Component {
   handleSubmit(e) {
     alert('From: ' + this.state.start + 'To: ' + this.state.dest);
     e.preventDefault();
+  }
+  handleSearchChange(fieldId, value){
+    this.setState({
+      [fieldId]: value
+    });
   }
 
 
@@ -40,13 +46,16 @@ class AddTrip extends Component {
             </div>
             <div className='content'>
               <form onSubmit={this.handleSubmit}>
-                <label>
-                  <input type='text' name='start' value={this.state.value} onChange={this.handleChange} placeholder={'where you start?'} required/>
-                </label>
-                <label>
-                  <input type='text' name='dest' value={this.state.value} onChange={this.handleChange} placeholder={'where you go?'} required/>
-                </label>
-                <SearchBox />
+                <SearchBox 
+                key="start"
+                id="start"
+                prompt="Where did you start?"
+                onPlacesChanged={this.handleSearchChange} />
+                <SearchBox 
+                key="dest"
+                id="dest"
+                prompt="Where did you end?"
+                onPlacesChanged={this.handleSearchChange}/>
                 <input type='submit' value='Create' />
               </form>
             </div>
