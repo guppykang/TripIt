@@ -29,7 +29,7 @@ class Event extends Component {
     console.log(e.target.start.value)
     console.log(e.target.dest.value)
 
-    fire.database().ref('Event/').push({
+    fire.database().ref('Trip/Events').push({
           start: e.target.start.value,
           dest: e.target.dest.value, 
           time: e.target.dest.value
