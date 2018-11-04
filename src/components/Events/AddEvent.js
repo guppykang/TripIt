@@ -2,7 +2,10 @@ import Popup from 'reactjs-popup';
 import React, { Component } from 'react';
 import SearchBox from '../searchbox';
 import fire from '../fire';
+import SearchBox from '../searchbox';
+
 import './addEvent.css';
+
 
 class Event extends Component {
   constructor(props) {
@@ -20,7 +23,7 @@ class Event extends Component {
   }
 
   handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+  //  this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit(e) {
@@ -69,7 +72,7 @@ class Event extends Component {
                 onPlacesChanged={this.handleSearchChange} />
 
                 <label>
-                  <input type='text' name='start' value={this.state.value} onChange={this.handleChange} placeholder={'Name of event?'} required/>
+                  <input type='text' name='dest' value={this.state.value} onChange={this.handleChange} placeholder={'Name of event?'} required/>
                 </label>
 
                 <label>
