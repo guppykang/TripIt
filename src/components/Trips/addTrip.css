@@ -1,0 +1,23 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    border-bottom: solid thin black;
+}
+
+.close {
+    cursor: pointer;
+}
+
+.header button {
+    background-color: white;
+    border: none;
+}
+
+form input {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+
