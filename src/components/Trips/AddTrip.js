@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Link } from 'gatsby'
 
 import fire from '../fire';
+import SearchBox from '../searchbox';
+
 import './addTrip.css';
 
 class AddTrip extends Component {
@@ -16,6 +18,7 @@ class AddTrip extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
   handleChange(e) {
@@ -25,12 +28,16 @@ class AddTrip extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    console.log(e.target.start.value)
-    console.log(e.target.dest.value)
+    console.log(this.state.start);
+    console.log(this.state.dest);
 
-    fire.database().ref('Event/').push({
-          start: e.target.start.value,
-          dest: e.target.dest.value
+    fire.database().ref('Trip/').push({
+          startName: this.state.start.name,
+          startLat: this.state.start.geometry.location.lat(),
+          startLng: this.state.start.geometry.location.lng(),
+          destName: this.state.dest.name,
+          destLat: this.state.dest.geometry.location.lat(),
+          destLng: this.state.dest.geometry.location.lng(),
       }).then((data)=>{
           //success callback
           console.log('data ' , data)
@@ -38,6 +45,13 @@ class AddTrip extends Component {
           //error callback
           console.log('error ' , error)
       })
+  }
+
+  handleSearchChange(fieldId, location) {
+    console.log(location.geometry.location.lat());
+    this.setState({
+      [fieldId]: location
+    });
   }
 
 
@@ -54,12 +68,16 @@ class AddTrip extends Component {
             </div>
             <div className='content'>
               <form onSubmit={this.handleSubmit}>
-                <label>
-                  <input type='text' name='start' value={this.state.value} onChange={this.handleChange} placeholder={'where you start?'} required/>
-                </label>
-                <label>
-                  <input type='text' name='dest' value={this.state.value} onChange={this.handleChange} placeholder={'where you go?'} required/>
-                </label>
+                <SearchBox
+                  key="start"
+                  id="start"
+                  prompt="Where did you start?"
+                  onPlacesChanged={this.handleSearchChange} />
+                <SearchBox
+                  key="dest"
+                  id="dest"
+                  prompt="Where did you end?"
+                  onPlacesChanged={this.handleSearchChange} />
                 <button type='submit'>Create</button>
               </form>
             </div>
