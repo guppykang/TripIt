@@ -19,8 +19,7 @@ class SearchBox extends Component{
 
     onPlacesChanged(){
         var newPlace = this._searchBox.getPlaces()[0];
-        const location = newPlace.name
-        this.props.onPlacesChanged(this.props.id, location);
+        this.props.onPlacesChanged(this.props.id, newPlace);
         this.setState({
             places: newPlace
         })

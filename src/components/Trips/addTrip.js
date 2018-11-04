@@ -26,9 +26,10 @@ class AddTrip extends Component {
     alert('From: ' + this.state.start + 'To: ' + this.state.dest);
     e.preventDefault();
   }
-  handleSearchChange(fieldId, value){
+  handleSearchChange(fieldId, location){
+    var name = location.name;
     this.setState({
-      [fieldId]: value
+      [fieldId]: name
     });
   }
 
