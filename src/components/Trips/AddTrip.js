@@ -32,12 +32,16 @@ class AddTrip extends Component {
     console.log(this.state.dest);
 
     fire.database().ref('Trip/').push({
-          startName: this.state.start.name,
-          startLat: this.state.start.geometry.location.lat(),
-          startLng: this.state.start.geometry.location.lng(),
-          destName: this.state.dest.name,
-          destLat: this.state.dest.geometry.location.lat(),
-          destLng: this.state.dest.geometry.location.lng(),
+          start: {
+            name: this.state.start.name,
+            lat: this.state.start.geometry.location.lat(),
+            lng: this.state.start.geometry.location.lng()
+          },
+          dest: {
+            name: this.state.dest.name,
+            lat: this.state.dest.geometry.location.lat(),
+            lng: this.state.dest.geometry.location.lng()
+          }
       }).then((data)=>{
           //success callback
           console.log('data ' , data)
