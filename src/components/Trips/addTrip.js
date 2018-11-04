@@ -1,5 +1,8 @@
 import Popup from 'reactjs-popup';
 import React, { Component } from 'react';
+import { Link } from 'gatsby'
+
+import fire from '../fire';
 import './addTrip.css';
 
 class AddTrip extends Component {
@@ -20,8 +23,21 @@ class AddTrip extends Component {
   }
 
   handleSubmit(e) {
-    alert('From: ' + this.state.start + 'To: ' + this.state.dest);
     e.preventDefault();
+
+    console.log(e.target.start.value)
+    console.log(e.target.dest.value)
+
+    fire.database().ref('Event/').push({
+          start: e.target.start.value,
+          dest: e.target.dest.value
+      }).then((data)=>{
+          //success callback
+          console.log('data ' , data)
+      }).catch((error)=>{
+          //error callback
+          console.log('error ' , error)
+      })
   }
 
 
@@ -44,7 +60,8 @@ class AddTrip extends Component {
                 <label>
                   <input type='text' name='dest' value={this.state.value} onChange={this.handleChange} placeholder={'where you go?'} required/>
                 </label>
-                <input type='submit' value='Create' />
+                <button type='submit'>Create</button>
+                <Link to="/viewTrip/map/">Cancel</Link>
               </form>
             </div>
           </div>
