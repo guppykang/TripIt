@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import './index.css';
 
 import Layout from '../components/layout';
 import FontPage from '../components/fontPage';
+import AddTrip from '../components/Trips/AddTrip';
 
 const IndexPage = () => (
   <Layout>
     <FontPage />
-    <Link to="/create-trip/">Create Trip</Link>
+    <AddTrip />
   </Layout>
 )
 
