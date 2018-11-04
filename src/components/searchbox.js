@@ -22,20 +22,9 @@ class SearchBox extends Component{
 
         newPlace.push(this._searchBox.getPlaces()[0]);
 
-        console.log(newPlace);
-
         this.setState({
             places: newPlace
         })
-        console.log("RIGHT HERE");
-        console.log(this.state.places);
-        // const _places = this._searchBox.getPlaces();
-
-        // console.log(_places)
-
-        // this.setState({
-        //     places: _places
-        // });
     }
     render(){
 
@@ -62,14 +51,6 @@ class SearchBox extends Component{
                         }}
                     />
                 </StandaloneSearchBox>
-                <ol>
-                    {props.places.map((place) =>
-                        <li>
-                            {/* {place.geometry} */}
-                            ({place.geometry.location.lat()}, {place.geometry.location.lng()})
-                        </li>
-                    )}
-                </ol>
             </div>
         ));
 
