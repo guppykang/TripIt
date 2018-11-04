@@ -2,7 +2,6 @@ import Popup from 'reactjs-popup';
 import React, { Component } from 'react';
 import SearchBox from '../searchbox';
 import fire from '../fire';
-import SearchBox from '../searchbox';
 
 import './addEvent.css';
 
