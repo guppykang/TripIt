@@ -4,9 +4,7 @@ import { Link } from 'gatsby';
 import Layout from '../components/layout';
 import Image from '../components/image';
 import FontPage from '../components/Trips/fontPage';
-import Layout from '../components/layout'
-import Image from '../components/image'
-import SearchBox from '../components/searchbox'
+import SearchBox from '../components/searchbox';
 
 const IndexPage = () => (
   <Layout>
