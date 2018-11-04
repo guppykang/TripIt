@@ -2,6 +2,8 @@ import Popup from 'reactjs-popup';
 import React, { Component } from 'react';
 import './addTrip.css';
 
+import SearchBox from '../searchbox';
+
 class AddTrip extends Component {
   constructor(props) {
     super(props);
@@ -44,6 +46,7 @@ class AddTrip extends Component {
                 <label>
                   <input type='text' name='dest' value={this.state.value} onChange={this.handleChange} placeholder={'where you go?'} required/>
                 </label>
+                <SearchBox />
                 <input type='submit' value='Create' />
               </form>
             </div>

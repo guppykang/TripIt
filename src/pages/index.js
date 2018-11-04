@@ -11,6 +11,7 @@ const IndexPage = () => (
     <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
       <Image />
     </div>
+    <FontPage />
     <Link to="/viewTrip/map/">Map</Link>
     <Link to="/create-trip/">Create Trip</Link>
   </Layout>
