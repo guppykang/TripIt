@@ -1,10 +1,20 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
+<<<<<<< HEAD
 import Layout from '../components/layout';
 import Image from '../components/image';
 import FontPage from '../components/Trips/fontPage';
 import SearchBox from '../components/searchbox';
+||||||| merged common ancestors
+import Layout from '../components/layout'
+import Image from '../components/image'
+import SearchBox from '../components/searchbox'
+=======
+import Layout from '../components/layout';
+import Image from '../components/image';
+import FontPage from '../components/Trips/fontPage';
+>>>>>>> 4c284878620e3de2ee5607d050c58a5177a9ef05
 
 const IndexPage = () => (
   <Layout>
