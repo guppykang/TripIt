@@ -1,7 +1,6 @@
 import Popup from 'reactjs-popup';
 import React, { Component } from 'react';
-import { Link } from 'gatsby'
-
+import SearchBox from '../searchbox';
 import fire from '../fire';
 import SearchBox from '../searchbox';
 
@@ -14,8 +13,8 @@ class Event extends Component {
 
     this.state = {
       start: '',
-      dest: '',
-      time: ''
+      time: '',
+      location: null
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -30,16 +29,12 @@ class Event extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    console.log(this.state.start.name)
-    console.log(e.target.dest.value)
+    console.log(e.target.start.value)
 
     fire.database().ref('Trip/Events').push({
-          start: {
-            name: this.state.start.name,
-            lat: this.state.start.geometry.location.lat(),
-            lng: this.state.start.geometry.location.lng()
-          },
-          name: e.target.dest.value,
+          start: e.target.start.value,
+          lat: this.state.location.geometry.location.lat(),
+          lng: this.state.location.geometry.location.lng(),
           time: e.target.time.value
       }).then((data)=>{
           //success callback
@@ -50,10 +45,9 @@ class Event extends Component {
       })
   }
 
-  handleSearchChange(fieldId, location) {
-    console.log(location.geometry.location.lat());
+  handleSearchChange(fieldId, location){
     this.setState({
-      [fieldId]: location
+      location: location
     });
   }
 
@@ -71,11 +65,11 @@ class Event extends Component {
             </div>
             <div className='content'>
               <form onSubmit={this.handleSubmit}>
-                <SearchBox
-                  key="start"
-                  id="start"
-                  prompt="Where do you go?"
-                  onPlacesChanged={this.handleSearchChange} />
+              <SearchBox 
+                key="location"
+                id="location"
+                prompt="Location of Event?"
+                onPlacesChanged={this.handleSearchChange} />
 
                 <label>
                   <input type='text' name='dest' value={this.state.value} onChange={this.handleChange} placeholder={'Name of event?'} required/>
